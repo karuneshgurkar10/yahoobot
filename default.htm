@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Yahoo Bot</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="/Contents/botchat.css" rel="stylesheet" />
+    <link type="text/css" href="Contents/styles.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="/Scripts/botchat.js"></script>
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/CognitiveServices.js"></script>
+
+</head>
+<body style="font-family:'Segoe UI'">
+
+
+
+
+
+    <div class="row" style="margin-top:20%;width:100%;vertical-align:middle;text-align:left;">
+        <div id="BotChatGoesHere" class="col-lg-9 col-md-9 chat-column" style="height: 500px; width: 75%; border-radius:10px; border: 2px solid #e5dbb8;margin-top:-20%;background:white;margin-left:15%">
+
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        var params = BotChat.queryParams(location.search);
+        var user = {
+            id: 'you',
+            name: 'you'
+        };
+
+        var bot = {
+            id: 'botid',
+            name: 'botname'
+        };
+
+        window['botchatDebug'] = params['debug'] && params['debug'] === "true";
+
+
+
+
+        //Cross Browser
+         var speechOptions = {
+             speechRecognizer: new BotChat.SpeechRecognition.CognitiveServicesSpeechRecognizer({ subscriptionKey: '1643f382b4b844b68be4297b2f60b5f2' }),
+               speechSynthesizer: new BotChat.SpeechSynthesis.BrowserSpeechSynthesizer()
+
+
+ 
+        }
+        var botConnection = new BotChat.DirectLine({
+ 
+            secret: 'A4gFllzjTgs.cwA.eVQ.sqhv5MJu9DIqEdlpextG4ar6wIEVv057o8tTtYJ2VtU',
+
+        });
+
+  
+
+        BotChat.App({
+
+            botConnection: botConnection,
+           user: user,
+            bot: bot,
+            resize: 'detect',
+           locale: 'en_IN',
+           speechOptions: speechOptions,
+
+        }, document.getElementById("BotChatGoesHere"));
+
+    </script>
+</body>
+</html>
